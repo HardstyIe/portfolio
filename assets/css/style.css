@@ -1,0 +1,96 @@
+:root {
+  --pourcent: 50;
+}
+
+html,
+body {
+  color: black;
+  margin: 0;
+  /* max-width: 1024px; */
+  margin: 0 auto;
+}
+
+header {
+  background-color: #3a8eba;
+  padding: 1em;
+}
+
+header h1 {
+  font-size: 3.5em;
+  color: #eeee1fc0;
+  margin: 0;
+}
+
+header aside,
+h2 {
+  color: white;
+}
+
+main {
+  padding: 0 1em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+h1 {
+  color: #3a8eba;
+}
+
+li {
+  list-style-type: none;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  align-items: flex-end;
+}
+
+.formation li {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.formation h1 {
+  font-size: 2.5em;
+}
+
+.qualification {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.qualification img {
+  width: 60px;
+  height: 60px;
+}
+
+.qualification>div {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.qualification .level {
+  width: 200px;
+  height: 10px;
+  background-color: black;
+}
+
+.qualification .level-content {
+  width: var(--pourcent);
+  height: 100%;
+  background-color: #3a8eba;
+}
+
+.qualification .level-content2 {
+  width: .2em;
+  height: 100%;
+  transform: translateX(calc((200px / 100) * var(--pourcent) - 50%)) scale(3);
+  background-color: #3a8eba;
+}
