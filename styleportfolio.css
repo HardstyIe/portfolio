@@ -1,0 +1,77 @@
+html {
+  color: black;
+}
+
+header {
+  background-color: #3A8EBA;
+}
+
+header h1 {
+  font-size: 3.5em;
+  color: #eeee1fc0;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  align-items: flex-end;
+}
+
+header aside,
+h2 {
+  color: white;
+}
+
+.formation {
+  list-style-type: none;
+}
+
+.formation li {
+  font-size: 2em;
+  font-weight: bold;
+  list-style-type: none;
+}
+
+.formation h1 {
+  font-size: 2.5em;
+  color: #3A8EBA;
+}
+
+main h1 {
+  color: #3A8EBA;
+}
+
+.experience li {
+  list-style-type: none;
+}
+
+.competence ul {
+  list-style-type: none;
+}
+
+.qualification img {
+  width: 60px;
+  height: 60px;
+}
+
+.qualification h1 {
+  color: #3A8EBA
+}
+
+.interet li {
+  list-style-type: none
+  ;
+}
+
+.interet h1 {
+  color: #3A8EBA;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
