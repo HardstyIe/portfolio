@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Ducsman",
+    "description": "Site web d'un hotel restaurant.",
+    "status": "Completed"
+  },
+  {
+    "id": 2,
+    "name": "WeatherApp",
+    "description": "Application météo pour consulter les prévisions locales.",
+    "status": "Completed"
+  },
+  {
+    "id": 3,
+    "name": "DataAnalytics",
+    "description": "Outil d'analyse de données pour les entreprises. (En cours de développement)",
+    "status": "In Progress"
+  }
+]
