@@ -243,11 +243,6 @@ if command -v ollama &>/dev/null; then
     sleep 1
   done
   
-  msg "Téléchargement du modèle Ollama 'llama3.2:1b'…"
-  ollama pull llama3.2:1b
-  
-  msg "Téléchargement du modèle Ollama 'mistral:instruct'…"
-  ollama pull mistral:instruct
 else
   warn "Commande 'ollama' non trouvée ; saisis manuellement si besoin."
 fi

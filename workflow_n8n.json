@@ -1,0 +1,1028 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chatbot",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -288,
+        2768
+      ],
+      "id": "832df1da-a6cf-4302-8e0c-8552502d21ab",
+      "name": "Webhook",
+      "webhookId": "ae3b0526-5247-460f-b7d2-22d4d45c3644",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "portfolio",
+          "mode": "list",
+          "cachedResultName": "portfolio"
+        },
+        "embeddingBatchSize": 1000,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [
+        1296,
+        96
+      ],
+      "id": "10b0417a-40a2-48a4-9e79-ac6f471456ca",
+      "name": "Qdrant Vector Store",
+      "credentials": {
+        "qdrantApi": {
+          "id": "wAgEJxDqECOup1vn",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "mxbai-embed-large:latest"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [
+        1312,
+        320
+      ],
+      "id": "10301d91-3fff-40ab-8c40-86413c15960a",
+      "name": "Embeddings Ollama1",
+      "credentials": {
+        "ollamaApi": {
+          "id": "ypKRIIZgsoW0gEe9",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        1440,
+        320
+      ],
+      "id": "73cf2e2f-f189-486a-bfb1-4e96fb66136a",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "resource": "repository",
+        "operation": "get",
+        "owner": {
+          "__rl": true,
+          "value": "HardstyIe",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "https://github.com/HardstyIe/brief_simplon_employee_data",
+          "mode": "url"
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        -272,
+        -256
+      ],
+      "id": "f4a7dbab-0ee7-41a9-b90a-dfaa9e5ec099",
+      "name": "Get a repository",
+      "webhookId": "c4906ee0-fcbf-433f-afed-033d91d52c31",
+      "credentials": {
+        "githubApi": {
+          "id": "Ud4JafHAp11BS5HX",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "repository",
+        "operation": "get",
+        "owner": {
+          "__rl": true,
+          "value": "HardstyIe",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "https://github.com/HardstyIe/weather-app",
+          "mode": "url"
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        -272,
+        -64
+      ],
+      "id": "18f075db-c126-4ff7-8440-2784bda90a64",
+      "name": "Get a repository1",
+      "webhookId": "c4906ee0-fcbf-433f-afed-033d91d52c31",
+      "credentials": {
+        "githubApi": {
+          "id": "Ud4JafHAp11BS5HX",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "repository",
+        "operation": "get",
+        "owner": {
+          "__rl": true,
+          "value": "HardstyIe",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "https://github.com/HardstyIe/Projet-groupe-Ducman",
+          "mode": "url"
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        -272,
+        128
+      ],
+      "id": "ecc201ca-f957-4f02-b62d-1d77f9f464bd",
+      "name": "Get a repository2",
+      "webhookId": "c4906ee0-fcbf-433f-afed-033d91d52c31",
+      "credentials": {
+        "githubApi": {
+          "id": "Ud4JafHAp11BS5HX",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            },
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -496,
+        -64
+      ],
+      "id": "42ff3eba-5b21-4266-9286-1a679cc5dbf3",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "<Role> Tu es un assistant de consultation de données nommé **Assistant du Portfolio**. </Role>\n\n<Règles>\n\nTu dois obligatoirement utiliser la fonction search_portfolio pour toute question posée.\n\nTu n’as pas le droit d’émettre une hypothèse, d’imaginer ou de reformuler une information non trouvée.\n\nSi une donnée n’est pas trouvée par search_portfolio, tu dois répondre exactement :\n\"Non spécifié dans le portfolio.\"\n\nNe cite que les informations textuellement identiques à celles extraites.\n\nNe jamais paraphraser ni compléter les phrases.\n\nTa réponse doit être courte, factuelle et en français.\n</Règles>\n\n<Tâche>\nPour chaque question de l’utilisateur :\n\nAppelle search_portfolio avec les mots-clés de la question.\n\nLis attentivement le résultat retourné.\n\nRéponds uniquement avec les données textuelles trouvées.\n\nSi aucune correspondance exacte n’est trouvée, réponds “Non spécifié dans le portfolio.”\n</Tâche>\n\n<Format> Réponse = une phrase factuelle, sans commentaire ni ajout. </Format>\n\n<Étapes>\n\nIdentifier les mots-clés de la question.\n\nUtiliser search_portfolio avec ces mots-clés.\n\nVérifier si un résultat est retourné.\n\nSi oui → citer exactement le texte.\n\nSi non → répondre “Non spécifié dans le portfolio.”\n</Étapes>\n\n<Contraintes> - Interdit : reformuler, inventer, supposer, compléter, commenter. - Interdit : répondre sans appeler `search_portfolio`. </Contraintes> <Exemples> **Exemple 1 :** Q : Quelle est la date de création du projet ? A : 2022 (si trouvé dans le portfolio). A : Non spécifié dans le portfolio (si non trouvé).\n\nExemple 2 :\nQ : Quels langages sont utilisés ?\nA : Python, TypeScript.\n</Exemples>\n\n<Tremplin> Commence par : “Je vais chercher l’information dans le portfolio...” </Tremplin>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        128,
+        2768
+      ],
+      "id": "12b948eb-11c2-4e89-8509-c4f4ad9ec6e5",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-r1:8b",
+        "options": {
+          "temperature": 0.1,
+          "topP": 0.5,
+          "frequencyPenalty": 1.3,
+          "numCtx": 8196,
+          "presencePenalty": 0.6
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        64,
+        2976
+      ],
+      "id": "43f5510f-493f-4b88-b43c-768f123698fe",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "ypKRIIZgsoW0gEe9",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        192,
+        2976
+      ],
+      "id": "a96a8c38-027e-4945-86d7-fe06460250bb",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "BV7Gc9ixD1t01UHh",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "mxbai-embed-large:latest"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [
+        336,
+        3184
+      ],
+      "id": "eb6b2553-afb9-432e-aa61-84bc950fa13f",
+      "name": "Embeddings Ollama",
+      "credentials": {
+        "ollamaApi": {
+          "id": "ypKRIIZgsoW0gEe9",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f6c054a9-6683-4d36-9780-d184f33260c9",
+              "name": "chatInput",
+              "value": "={{ $json.chatInput }}",
+              "type": "string"
+            },
+            {
+              "id": "c3e13c02-7ccd-44b7-aa45-775dc61c3aca",
+              "name": "userId",
+              "value": "={{ $json.body.userId }}",
+              "type": "string"
+            },
+            {
+              "id": "573ace2a-3f07-4508-8c47-7f23a37fc411",
+              "name": "history",
+              "value": "={{ $json.body.history }}",
+              "type": "array"
+            },
+            {
+              "id": "6fac33ba-db46-400b-94b9-f3c0b2194586",
+              "name": "sessionId",
+              "value": "={{ $json.body.sessionId }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -112,
+        2768
+      ],
+      "id": "ab316796-6740-4ec5-9be7-07ed2d5c6135",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.readme_url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github.v3.raw"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        624,
+        -144
+      ],
+      "id": "7bb948a6-a39e-4f3a-a9ec-9128851f844f",
+      "name": "HTTP Request",
+      "retryOnFail": true,
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Récupérer TOUS les repos de tous les nodes GitHub\nconst allRepos = $input.all();\nconst enrichedDocs = [];\n\nfor (const item of allRepos) {\n  const repo = item.json;\n  \n  // Vérifier que c'est bien un repo GitHub\n  if (!repo.name || !repo.html_url) continue;\n  \n  // 1. Document principal du repo\n  enrichedDocs.push({\n    json: {\n      pageContent: `# ${repo.name}\n\n**Description:** ${repo.description || 'Pas de description'}\n\n**Langage principal:** ${repo.language || 'Non spécifié'}\n**URL:** ${repo.html_url}\n**Homepage:** ${repo.homepage || 'Aucune'}\n**Créé le:** ${new Date(repo.created_at).toLocaleDateString('fr-FR')}\n**Dernière mise à jour:** ${new Date(repo.updated_at).toLocaleDateString('fr-FR')}\n\n**Statistiques:**\n- ⭐ Stars: ${repo.stargazers_count}\n- 🔀 Forks: ${repo.forks_count}\n- 👁️ Watchers: ${repo.watchers_count}\n- 🐛 Issues ouvertes: ${repo.open_issues_count}\n\n**Licence:** ${repo.license?.name || 'Aucune'}\n**Topics:** ${repo.topics?.join(', ') || 'Aucun'}`,\n      \n      metadata: {\n        type: \"repository_overview\",\n        repo_name: repo.name,\n        repo_full_name: repo.full_name,\n        language: repo.language,\n        url: repo.html_url,\n        homepage: repo.homepage,\n        created_at: repo.created_at,\n        updated_at: repo.updated_at,\n        stars: repo.stargazers_count,\n        topics: repo.topics || [],\n        license: repo.license?.spdx_id || null\n      }\n    }\n  });\n  \n  // 2. Document technique détaillé\n  const techStack = [];\n  if (repo.language) techStack.push(repo.language);\n  if (repo.topics?.length) techStack.push(...repo.topics);\n  \n  enrichedDocs.push({\n    json: {\n      pageContent: `Projet: ${repo.name}\n\nStack technique: ${techStack.join(', ') || 'Non spécifié'}\n\nDescription: ${repo.description || 'Pas de description'}\n\n${repo.homepage ? `Demo disponible: ${repo.homepage}` : 'Pas de demo'}\n\nType de projet: ${classifyRepo(repo)}\nLangage: ${repo.language}`,\n      \n      metadata: {\n        type: \"technical_details\",\n        repo_name: repo.name,\n        language: repo.language,\n        tech_stack: techStack,\n        category: classifyRepo(repo),\n        has_demo: !!repo.homepage\n      }\n    }\n  });\n  \n  // 3. Document pour la recherche par compétences\n  if (repo.language || repo.topics?.length) {\n    const skills = [repo.language, ...(repo.topics || [])].filter(Boolean);\n    \n    enrichedDocs.push({\n      json: {\n        pageContent: `Compétences techniques démontrées dans le projet \"${repo.name}\":\n\n${skills.map(skill => `- ${skill}`).join('\\n')}\n\nDescription du projet: ${repo.description}\n\nCe projet illustre ma maîtrise de ${repo.language} et mon expérience en ${classifyRepo(repo)}.`,\n        \n        metadata: {\n          type: \"skills_showcase\",\n          repo_name: repo.name,\n          language: repo.language,\n          skills: skills,\n          project_type: classifyRepo(repo)\n        }\n      }\n    });\n  }\n}\n\n// Fonction helper pour classifier le repo\nfunction classifyRepo(repo) {\n  const lang = (repo.language || '').toLowerCase();\n  const topics = (repo.topics || []).map(t => t.toLowerCase());\n  const desc = (repo.description || '').toLowerCase();\n  const name = repo.name.toLowerCase();\n  const all = [lang, ...topics, desc, name].join(' ');\n  \n  if (all.match(/react|vue|angular|frontend|ui|css|html|tailwind|next/)) return 'frontend';\n  if (all.match(/node|express|api|backend|server|django|flask|fastapi/)) return 'backend';\n  if (all.match(/docker|kubernetes|ci|cd|devops|terraform|ansible/)) return 'devops';\n  if (all.match(/ai|ml|data|tensorflow|pytorch|llm|rag|embedding|streamlit/)) return 'ai_data';\n  if (all.match(/mobile|ios|android|react-native|flutter/)) return 'mobile';\n  if (all.match(/database|sql|postgres|mongo|mysql/)) return 'database';\n  if (all.match(/automation|n8n|workflow|script/)) return 'automation';\n  \n  return 'other';\n}\n\nconsole.log(`✅ ${enrichedDocs.length} documents enrichis créés à partir de ${allRepos.length} repositories`);\n\nreturn enrichedDocs;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -48,
+        -64
+      ],
+      "id": "c6a14a2c-993d-40e4-ae32-6e402472927d",
+      "name": "Code - Enrich github data"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Récupérer les docs enrichis des repos\nconst repoDocs = $input.all();\n\n// Extraire des stats globales\nconst totalRepos = new Set(repoDocs.map(d => d.json.metadata?.repo_name)).size;\nconst languages = new Set();\nconst skills = new Set();\nconst categories = {};\n\nfor (const doc of repoDocs) {\n  if (doc.json.metadata?.language) languages.add(doc.json.metadata.language);\n  if (doc.json.metadata?.skills) doc.json.metadata.skills.forEach(s => skills.add(s));\n  if (doc.json.metadata?.category) {\n    categories[doc.json.metadata.category] = (categories[doc.json.metadata.category] || 0) + 1;\n  }\n}\n\n// Documents de contexte personnel\nconst contextDocs = [\n  {\n    json: {\n      pageContent: `# Portfolio de développeur\n\nJe suis un développeur full-stack avec ${totalRepos} projets open-source sur GitHub.\n\n**Langages maîtrisés:** ${Array.from(languages).join(', ')}\n\n**Technologies et compétences:** ${Array.from(skills).slice(0, 20).join(', ')}\n\n**Domaines d'expertise:**\n${Object.entries(categories).map(([cat, count]) => `- ${cat}: ${count} projet(s)`).join('\\n')}\n\n**Profil GitHub:** https://github.com/HardstyIe\n\nMon portfolio démontre une expertise variée en développement web, automatisation, et intelligence artificielle.`,\n      \n      metadata: {\n        type: \"portfolio_overview\",\n        category: \"about\",\n        importance: \"high\",\n        total_projects: totalRepos\n      }\n    }\n  },\n  {\n    json: {\n      pageContent: `# Compétences techniques\n\n## Langages de programmation\n${Array.from(languages).map(lang => `- ${lang}`).join('\\n')}\n\n## Stack technique\n- **Frontend:** React, Next.js, TypeScript, TailwindCSS\n- **Backend:** Node.js, Express, Python, FastAPI\n- **DevOps:** Docker, n8n, CI/CD, Automatisation\n- **Data & IA:** RAG, Vector Databases (Qdrant, ChromaDB), LLMs, Ollama\n- **Databases:** PostgreSQL, MongoDB, Redis\n\n## Méthodologies\n- Architecture microservices\n- RESTful APIs\n- Containerisation avec Docker\n- Automatisation de workflows\n- Recherche sémantique et RAG`,\n      \n      metadata: {\n        type: \"skills_comprehensive\",\n        category: \"technical\",\n        importance: \"high\"\n      }\n    }\n  },\n  {\n    json: {\n      pageContent: `# Approche et philosophie\n\nJe privilégie:\n- Le code propre, maintenable et bien documenté\n- L'automatisation des tâches répétitives\n- Les technologies modernes et performantes\n- L'architecture scalable et modulaire\n- Le déploiement avec Docker et conteneurs\n\nMes projets reflètent une approche pragmatique du développement, avec un focus sur l'efficacité et la qualité.`,\n      \n      metadata: {\n        type: \"philosophy\",\n        category: \"about\",\n        importance: \"medium\"\n      }\n    }\n  }\n];\n\nconsole.log(`✅ ${contextDocs.length} documents de contexte ajoutés`);\n\n// Combiner avec les repos\nreturn [...repoDocs, ...contextDocs];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        176,
+        -64
+      ],
+      "id": "2919efd8-abeb-4b0e-bfee-c6a16423e8c0",
+      "name": "Code - Enrich data + portfolio data"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst reposMap = new Map();\n\n// Extraire la liste unique des repos\nfor (const item of items) {\n  const meta = item.json.metadata;\n  if (meta?.repo_full_name && !reposMap.has(meta.repo_full_name)) {\n    reposMap.set(meta.repo_full_name, {\n      repo_full_name: meta.repo_full_name,\n      repo_name: meta.repo_name,\n      language: meta.language,\n      category: meta.category || meta.project_type\n    });\n  }\n}\n\nconst repos = Array.from(reposMap.values());\nconsole.log(`✅ ${repos.length} repos uniques à fetcher`);\n\nreturn repos.map(repo => ({\n  json: {\n    ...repo,\n    readme_url: `https://api.github.com/repos/${repo.repo_full_name}/readme`\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        -144
+      ],
+      "id": "2c36f255-c748-4c5f-9d44-022fc5f0b111",
+      "name": "Code - Extract repo list"
+    },
+    {
+      "parameters": {
+        "jsCode": "const readmeItems = $input.all();\nconst readmeDocs = [];\n\nfor (const item of readmeItems) {\n  // Le repo info devrait être dans item.json\n  const repoInfo = {\n    repo_name: item.json.repo_name || 'unknown',\n    repo_full_name: item.json.repo_full_name || 'unknown',\n    language: item.json.language || 'unknown',\n    category: item.json.category || 'other'\n  };\n  \n  // Le README content\n  const content = item.data || item.json.data || item.binary?.toString('utf-8');\n  \n  if (!content || content.length < 100) {\n    console.log(`⚠️ Pas de README pour ${repoInfo.repo_name}`);\n    continue;\n  }\n  \n  console.log(`✅ README ${repoInfo.repo_name}: ${content.length} chars`);\n  \n  // 1. README complet\n  readmeDocs.push({\n    json: {\n      pageContent: `# README: ${repoInfo.repo_name}\\n\\n${content}`,\n      metadata: {\n        type: \"readme_full\",\n        repo_name: repoInfo.repo_name,\n        repo_full_name: repoInfo.repo_full_name,\n        language: repoInfo.language,\n        category: repoInfo.category,\n        importance: \"high\"\n      }\n    }\n  });\n  \n  // 2. Sections\n  const sections = content.split(/\\n#{1,3} /);\n  sections.forEach((section, idx) => {\n    const cleaned = section.trim();\n    if (cleaned.length < 150) return;\n    \n    readmeDocs.push({\n      json: {\n        pageContent: cleaned,\n        metadata: {\n          type: \"readme_section\",\n          repo_name: repoInfo.repo_name,\n          repo_full_name: repoInfo.repo_full_name,\n          language: repoInfo.language,\n          category: repoInfo.category,\n          section_index: idx\n        }\n      }\n    });\n  });\n  \n  // 3. Code blocks\n  const codeBlocks = content.match(/```[\\s\\S]*?```/g) || [];\n  codeBlocks.slice(0, 3).forEach((block, idx) => {\n    const lang = block.match(/```(\\w+)/)?.[1] || 'text';\n    readmeDocs.push({\n      json: {\n        pageContent: block,\n        metadata: {\n          type: \"code_example\",\n          repo_name: repoInfo.repo_name,\n          repo_full_name: repoInfo.repo_full_name,\n          language: repoInfo.language,\n          code_language: lang\n        }\n      }\n    });\n  });\n}\n\nconsole.log(`✅ ${readmeDocs.length} docs README créés`);\nreturn readmeDocs;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        848,
+        -144
+      ],
+      "id": "64af0505-fb75-4c1c-a30e-7767693ae638",
+      "name": "Code - Parse readme"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        400,
+        96
+      ],
+      "id": "b6f38837-fe0c-45f6-9ece-ae1be9606ae9",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Searches my developer portfolio knowledge base for information about projects, skills, technologies, and experience. Use this tool to answer ANY question about my work.",
+        "qdrantCollection": {
+          "__rl": true,
+          "value": "portfolio",
+          "mode": "list",
+          "cachedResultName": "portfolio"
+        },
+        "topK": 20,
+        "useReranker": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [
+        320,
+        2976
+      ],
+      "id": "ede5ab2c-0771-4885-920e-909c22f01aab",
+      "name": "search_portfolio",
+      "credentials": {
+        "qdrantApi": {
+          "id": "wAgEJxDqECOup1vn",
+          "name": "QdrantApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        512,
+        2768
+      ],
+      "id": "2437af71-a505-4306-b4e9-dcd0360f7f2f",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        464,
+        3184
+      ],
+      "id": "24e18adc-7153-440a-9686-2eb18541cf11",
+      "name": "Reranker Cohere",
+      "credentials": {
+        "cohereApi": {
+          "id": "zB4TyH4qZdTKk1CU",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst enhanced = [];\n\n// Liste complète de keywords techniques\nconst TECH_KEYWORDS = {\n  languages: ['javascript', 'typescript', 'python', 'java', 'go', 'rust', 'php', 'ruby', 'c++', 'c#', 'swift', 'kotlin'],\n  frontend: ['react', 'vue', 'angular', 'next', 'nuxt', 'svelte', 'tailwind', 'css', 'html', 'sass', 'styled-components'],\n  backend: ['node', 'express', 'fastapi', 'django', 'flask', 'spring', 'nestjs', 'fastify', 'koa'],\n  database: ['postgresql', 'postgres', 'mysql', 'mongodb', 'redis', 'sqlite', 'qdrant', 'chromadb', 'pinecone'],\n  devops: ['docker', 'kubernetes', 'k8s', 'jenkins', 'gitlab', 'github actions', 'terraform', 'ansible', 'nginx'],\n  ai: ['ollama', 'llm', 'rag', 'embedding', 'vector', 'gpt', 'llama', 'mistral', 'tensorflow', 'pytorch'],\n  tools: ['git', 'vscode', 'n8n', 'postman', 'figma', 'webpack', 'vite', 'babel']\n};\n\nfunction extractKeywords(text) {\n  const lowerText = text.toLowerCase();\n  const found = new Set();\n  \n  // Chercher tous les keywords\n  Object.values(TECH_KEYWORDS).flat().forEach(keyword => {\n    if (lowerText.includes(keyword)) {\n      found.add(keyword);\n    }\n  });\n  \n  return Array.from(found);\n}\n\nfunction classifyImportance(type, contentLength, keywords) {\n  // Importance critique\n  if (type === 'portfolio_overview' || type === 'skills_comprehensive') {\n    return 'critical';\n  }\n  \n  // Importance haute\n  if (type === 'readme_full' || \n      type === 'repository_overview' || \n      type?.startsWith('qa_') ||\n      type === 'technical_details') {\n    return 'high';\n  }\n  \n  // Basé sur le contenu\n  if (keywords.length > 5) return 'high';\n  if (contentLength > 500) return 'medium';\n  \n  return 'low';\n}\n\nfunction detectCategory(text, existingCategory) {\n  if (existingCategory && existingCategory !== 'other') {\n    return existingCategory;\n  }\n  \n  const lower = text.toLowerCase();\n  \n  if (lower.match(/react|vue|angular|frontend|ui|css|html|tailwind/)) return 'frontend';\n  if (lower.match(/node|express|api|backend|server|django|flask|fastapi/)) return 'backend';\n  if (lower.match(/docker|kubernetes|ci|cd|devops|terraform|ansible/)) return 'devops';\n  if (lower.match(/ai|ml|data|tensorflow|pytorch|llm|rag|embedding/)) return 'ai_data';\n  if (lower.match(/database|sql|postgres|mongo|mysql|redis/)) return 'database';\n  if (lower.match(/mobile|ios|android|react-native|flutter/)) return 'mobile';\n  \n  return 'other';\n}\n\n// Traiter chaque document\nfor (const item of items) {\n  const meta = item.json.metadata || {};\n  const content = item.json.pageContent;\n  \n  // Extraire keywords\n  const keywords = extractKeywords(content);\n  \n  // Classifier importance\n  const importance = classifyImportance(meta.type, content.length, keywords);\n  \n  // Détecter catégorie si manquante\n  const category = detectCategory(content, meta.category);\n  \n  // Score de pertinence (pour priorisation)\n  let relevanceScore = 0;\n  if (importance === 'critical') relevanceScore += 100;\n  else if (importance === 'high') relevanceScore += 50;\n  else if (importance === 'medium') relevanceScore += 25;\n  relevanceScore += keywords.length * 5;\n  if (meta.type?.startsWith('qa_')) relevanceScore += 30;\n  \n  enhanced.push({\n    json: {\n      pageContent: content,\n      metadata: {\n        ...meta,\n        // Nouveaux champs\n        keywords: keywords,\n        importance: importance,\n        category: category,\n        relevance_score: relevanceScore,\n        content_length: content.length,\n        indexed_at: new Date().toISOString(),\n        has_code: content.includes('```'),\n        has_links: content.includes('http'),\n        // Garder les anciens champs\n        type: meta.type,\n        repo_name: meta.repo_name,\n        language: meta.language\n      }\n    }\n  });\n}\n\n// Stats\nconst stats = {\n  total: enhanced.length,\n  by_importance: {\n    critical: enhanced.filter(d => d.json.metadata.importance === 'critical').length,\n    high: enhanced.filter(d => d.json.metadata.importance === 'high').length,\n    medium: enhanced.filter(d => d.json.metadata.importance === 'medium').length,\n    low: enhanced.filter(d => d.json.metadata.importance === 'low').length\n  },\n  by_category: {}\n};\n\nenhanced.forEach(d => {\n  const cat = d.json.metadata.category;\n  stats.by_category[cat] = (stats.by_category[cat] || 0) + 1;\n});\n\nconsole.log('✅ Metadata Enhancement:');\nconsole.log(`   📊 Total documents: ${stats.total}`);\nconsole.log(`   🔥 Critical: ${stats.by_importance.critical}`);\nconsole.log(`   ⭐ High: ${stats.by_importance.high}`);\nconsole.log(`   📌 Medium: ${stats.by_importance.medium}`);\nconsole.log(`   📝 Low: ${stats.by_importance.low}`);\nconsole.log('   📁 Par catégorie:', JSON.stringify(stats.by_category));\n\nreturn enhanced;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1072,
+        96
+      ],
+      "id": "a074335c-8eb4-4e39-8fa8-0b3ce4bb6f1e",
+      "name": "Code - Add metadata enhanced"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst chunkedDocs = [];\n\nfunction smartChunk(rawText, maxLength = 800, overlap = 150) {\n  const text = String(rawText || \"\");\n  if (text.length <= maxLength) return [text];\n\n  const chunks = [];\n  const paragraphs = text.split(/\\n\\n+/);\n\n  if (paragraphs.length > 1) {\n    let currentChunk = \"\";\n    let previousChunk = \"\";\n\n    for (const para of paragraphs) {\n      const testChunk = currentChunk + (currentChunk ? \"\\n\\n\" : \"\") + para;\n\n      if (testChunk.length <= maxLength) {\n        currentChunk = testChunk;\n      } else {\n        if (currentChunk.length > 100) {\n          chunks.push(currentChunk.trim());\n          previousChunk = currentChunk;\n        }\n\n        if (previousChunk && overlap > 0) {\n          const words = previousChunk.split(\" \");\n          const overlapWords = words.slice(-Math.floor(overlap / 6));\n          currentChunk = overlapWords.join(\" \") + \"\\n\\n\" + para;\n        } else {\n          currentChunk = para;\n        }\n      }\n    }\n\n    if (currentChunk.length > 100) chunks.push(currentChunk.trim());\n  } else {\n    const sentences = text.match(/[^.!?\\n]+[.!?\\n]+/g) || [text];\n    let currentChunk = \"\";\n    let previousChunk = \"\";\n\n    for (const sentence of sentences) {\n      const trimmedSentence = sentence.trim();\n\n      if ((currentChunk + \" \" + trimmedSentence).length <= maxLength) {\n        currentChunk += (currentChunk ? \" \" : \"\") + trimmedSentence;\n      } else {\n        if (currentChunk.length > 100) {\n          chunks.push(currentChunk.trim());\n          previousChunk = currentChunk;\n        }\n\n        if (previousChunk && overlap > 0) {\n          const words = previousChunk.split(\" \");\n          const overlapWords = words.slice(-Math.floor(overlap / 6));\n          currentChunk = overlapWords.join(\" \") + \" \" + trimmedSentence;\n        } else {\n          currentChunk = trimmedSentence;\n        }\n      }\n    }\n\n    if (currentChunk.length > 100) chunks.push(currentChunk.trim());\n  }\n\n  return chunks.filter((c) => c.length > 50);\n}\n\nfor (const [i, item] of items.entries()) {\n  try {\n    const dataArray = item.json?.data ?? [];\n    if (!Array.isArray(dataArray)) continue;\n\n    for (const [j, sub] of dataArray.entries()) {\n      const content = sub.pageContent ?? \"\";\n      const metadata = sub.metadata ?? {};\n\n      if (!content || typeof content !== \"string\") continue;\n\n      // Pas de découpe si texte court ou important\n      if (\n        content.length <= 800 ||\n        metadata.importance === \"critical\" ||\n        metadata.type?.startsWith(\"qa_\")\n      ) {\n        chunkedDocs.push({\n          json: {\n            pageContent: content,\n            metadata: { ...metadata },\n          },\n        });\n        continue;\n      }\n\n      const chunks = smartChunk(content, 800, 150);\n\n      if (chunks.length === 1) {\n        chunkedDocs.push({\n          json: {\n            pageContent: content,\n            metadata: { ...metadata },\n          },\n        });\n      } else {\n        chunks.forEach((chunk, index) => {\n          chunkedDocs.push({\n            json: {\n              pageContent: chunk,\n              metadata: {\n                ...metadata,\n                is_chunked: true,\n                chunk_index: index + 1,\n                total_chunks: chunks.length,\n                original_length: content.length,\n                chunk_strategy:\n                  chunks.length > 3 ? \"paragraph\" : \"sentence\",\n              },\n            },\n          });\n        });\n      }\n    }\n  } catch (err) {\n    console.error(`❌ Erreur sur item ${i}:`, err.message);\n    continue;\n  }\n}\n\nreturn chunkedDocs;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        848,
+        96
+      ],
+      "id": "38bef03e-9268-45a2-9a27-1b8d87075d8e",
+      "name": "Code - Smart chunking"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst qaDocs = [];\n\nfunction generateQA(doc) {\n  const content = doc.pageContent || '';\n  const meta = doc.metadata || {};\n  const pairs = [];\n  \n  // Si pas de type, skip\n  if (!meta.type) {\n    console.log('⚠️ Document sans type, ignoré pour Q&A');\n    return pairs;\n  }\n  \n  switch(meta.type) {\n    case 'repository_overview':\n      // Questions sur le projet\n      if (meta.language && meta.repo_name) {\n        pairs.push({\n          pageContent: `Question: Quels sont les projets développés en ${meta.language} ?\nRéponse: Le projet ${meta.repo_name} est un projet ${meta.language}. ${meta.category ? `C'est un projet de type ${meta.category}.` : ''} ${content.includes('Description:') ? content.split('Description:')[1]?.split('\\n')[0] : ''}`,\n          metadata: { \n            ...meta, \n            type: 'qa_language', \n            question_type: 'projects_by_language', \n            search_keywords: [meta.language, 'projets', 'développement'] \n          }\n        });\n      }\n      \n      if (meta.homepage && meta.repo_name) {\n        pairs.push({\n          pageContent: `Question: Où puis-je voir une démo du projet ${meta.repo_name} ?\nRéponse: Une démo en ligne est disponible à cette adresse : ${meta.homepage}. Tu peux tester l'application directement dans ton navigateur.`,\n          metadata: { \n            ...meta, \n            type: 'qa_demo', \n            question_type: 'demo_link', \n            search_keywords: ['démo', 'demo', 'test', 'essayer'] \n          }\n        });\n      }\n      \n      if (meta.url && meta.repo_name) {\n        pairs.push({\n          pageContent: `Question: Où trouver le code source de ${meta.repo_name} ?\nRéponse: Le code source est disponible sur GitHub : ${meta.url}. Le projet est open-source.`,\n          metadata: { \n            ...meta, \n            type: 'qa_source', \n            question_type: 'source_code', \n            search_keywords: ['code', 'github', 'source'] \n          }\n        });\n      }\n      break;\n      \n    case 'skills_showcase':\n      if (meta.skills && Array.isArray(meta.skills) && meta.skills.length > 0 && meta.repo_name) {\n        meta.skills.forEach(skill => {\n          pairs.push({\n            pageContent: `Question: Tu as de l'expérience avec ${skill} ?\nRéponse: Oui ! J'ai utilisé ${skill} dans le projet ${meta.repo_name}. ${content.substring(0, 200)}`,\n            metadata: { \n              ...meta, \n              type: 'qa_skill', \n              question_type: 'skill_experience', \n              skill: skill, \n              search_keywords: [skill, 'compétence', 'expérience'] \n            }\n          });\n        });\n      }\n      break;\n      \n    case 'technical_details':\n      if (meta.repo_name && meta.language) {\n        pairs.push({\n          pageContent: `Question: C'est quoi le projet ${meta.repo_name} ?\nRéponse: ${meta.repo_name} est un projet ${meta.category || 'de développement'} développé en ${meta.language}. ${meta.tech_stack ? `Technologies : ${meta.tech_stack.join(', ')}.` : ''}`,\n          metadata: { \n            ...meta, \n            type: 'qa_project_overview', \n            question_type: 'project_description', \n            search_keywords: ['projet', 'description'] \n          }\n        });\n      }\n      break;\n      \n    case 'readme_full':\n      if (meta.repo_name && content.length > 100) {\n        pairs.push({\n          pageContent: `Question: Comment utiliser ${meta.repo_name} ?\nRéponse: ${content.substring(0, 400)}...`,\n          metadata: { \n            ...meta, \n            type: 'qa_usage', \n            question_type: 'how_to_use', \n            search_keywords: ['utiliser', 'installer', 'setup'] \n          }\n        });\n      }\n      break;\n      \n    case 'portfolio_overview':\n      pairs.push({\n        pageContent: `Question: Combien de projets as-tu ?\nRéponse: ${content.substring(0, 300)}`,\n        metadata: { \n          ...meta, \n          type: 'qa_portfolio_count', \n          question_type: 'portfolio_stats', \n          search_keywords: ['combien', 'projets', 'nombre'] \n        }\n      });\n      \n      if (meta.languages && Array.isArray(meta.languages)) {\n        pairs.push({\n          pageContent: `Question: Quels langages maîtrises-tu ?\nRéponse: Je maîtrise ${meta.languages.join(', ')}.`,\n          metadata: { \n            ...meta, \n            type: 'qa_languages', \n            question_type: 'programming_languages', \n            search_keywords: ['langages', 'programmation'] \n          }\n        });\n      }\n      break;\n      \n    case 'skills_comprehensive':\n      pairs.push({\n        pageContent: `Question: Quelle est ta stack technique ?\nRéponse: ${content.substring(0, 500)}`,\n        metadata: { \n          ...meta, \n          type: 'qa_full_stack', \n          question_type: 'complete_stack', \n          search_keywords: ['stack', 'technologies', 'compétences'] \n        }\n      });\n      break;\n      \n    case 'philosophy':\n      pairs.push({\n        pageContent: `Question: Quelle est ton approche du développement ?\nRéponse: ${content}`,\n        metadata: { \n          ...meta, \n          type: 'qa_approach', \n          question_type: 'development_philosophy', \n          search_keywords: ['approche', 'philosophie', 'méthodologie'] \n        }\n      });\n      break;\n      \n    case 'experience':\n      pairs.push({\n        pageContent: `Question: Quelle est ton expérience ?\nRéponse: ${content}`,\n        metadata: { \n          ...meta, \n          type: 'qa_experience', \n          question_type: 'professional_background', \n          search_keywords: ['expérience', 'parcours', 'formation'] \n        }\n      });\n      break;\n  }\n  \n  return pairs;\n}\n\n// Générer les Q&A\nlet qaCount = 0;\nfor (const item of items) {\n  try {\n    const qa = generateQA(item.json);\n    if (qa.length > 0) {\n      qaDocs.push(...qa.map(q => ({ json: q })));\n      qaCount += qa.length;\n    }\n  } catch (error) {\n    console.log(`⚠️ Erreur sur un document: ${error.message}`);\n  }\n}\n\nconsole.log(`✅ ${qaCount} paires Q&A générées à partir de ${items.length} documents`);\n\n// Retourner docs originaux + Q&A\nreturn [...items, ...qaDocs];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        624,
+        96
+      ],
+      "id": "0f4909c9-af7f-4377-b0b0-7684ae898dbe",
+      "name": "Code - Generate Q&A pair"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -704,
+        1168
+      ],
+      "id": "514a6595-c20f-4eba-97c1-9e18a100321b",
+      "name": "When chat message received",
+      "webhookId": "0f353f5a-fa1a-4c5d-8d31-6607fbe4adc1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const question = $json.chatInput;\n\nif (!question) {\n  throw new Error('Pas de question fournie');\n}\n\nconsole.log(`📥 Question: ${question}`);\n\nreturn [{\n  json: {\n    model: \"mxbai-embed-large\",\n    prompt: question,\n    original_question: question\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -544,
+        1168
+      ],
+      "id": "ee174701-4c27-44fc-85db-1b4c87e54e64",
+      "name": "Code - Generate embedding"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://host.docker.internal:11434/api/embeddings",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "={{ $json.model }}"
+            },
+            {
+              "name": "prompt",
+              "value": "={{ $json.prompt }}"
+            },
+            {
+              "name": "question",
+              "value": "={{ $json.original_question }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -336,
+        1168
+      ],
+      "id": "0cfdf3a7-7fd7-42f0-8c78-645df0eb4c1c",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const embedding = $json.embedding;\nconst question = $json.original_question || $('When chat message received').first().json.chatInput;\n\nreturn [{\n  json: {\n    vector: embedding,\n    limit: 5,\n    with_payload: true,\n    question: question,\n    payload: { question: question }\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -128,
+        1168
+      ],
+      "id": "f7898d86-3010-493d-a6f8-8fcc7f3b2207",
+      "name": "Code - Prepare qdrant query"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:6333/collections/portfolio/points/search",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "vector",
+              "value": "={{ $json.vector }}"
+            },
+            {
+              "name": "limit",
+              "value": "={{ $json.limit }}"
+            },
+            {
+              "name": "with_payload",
+              "value": "={{ $json.with_payload }}"
+            },
+            {
+              "name": "question",
+              "value": "={{ $json.question }}"
+            },
+            {
+              "name": "payload",
+              "value": "={{ $json.payload }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        160,
+        1168
+      ],
+      "id": "4af51095-4d56-4e93-883c-107401884ee3",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const context = $json.context; // ton texte combiné des documents\nconst question = $('Code - Prepare qdrant query').first().json.question; // récupère la question proprement\n\nconst prompt = `\nTu es un assistant factuel. Tu dois répondre UNIQUEMENT avec les informations EXACTES des documents ci-dessous.\n\nCONTEXTE (documents du portfolio) :\n${context}\n\nRÈGLES ABSOLUES :\n1. Réponds UNIQUEMENT avec les informations TEXTUELLES présentes dans les documents ci-dessus\n2. N'invente AUCUNE information, même si ça semble logique\n3. Si une information n'est PAS dans les documents, dis \"Non spécifié dans le portfolio\"\n4. Cite les faits EXACTEMENT comme écrits\n5. N'ajoute AUCUN détail de ton imagination\n6. Si tu ne sais pas, dis \"Je ne trouve pas cette information\"\n\nQUESTION : ${question}\n\nRÉPONSE (basée UNIQUEMENT sur les documents ci-dessus) :\n`;\n\nreturn [{\n  json: {\n    model: \"deepseek-r1:8b\",\n    prompt,\n    question,\n    stream: false,\n    options: {\n      temperature: 0.1,\n      top_p: 0.5,\n      repeat_penalty: 1.3\n    }\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        336,
+        1168
+      ],
+      "id": "bbba1151-c373-4a12-be51-390a04a0cad0",
+      "name": "Code - Build strict context"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:11434/api/generate",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "=model",
+              "value": "={{ $json.model }}"
+            },
+            {
+              "name": "prompt",
+              "value": "={{ $json.prompt }}"
+            },
+            {
+              "name": "stream",
+              "value": "={{ $json.stream }}"
+            },
+            {
+              "name": "options",
+              "value": "={{ $json.options }}"
+            },
+            {
+              "name": "question",
+              "value": "={{ $json.question }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        496,
+        1168
+      ],
+      "id": "de77479f-7d48-4ce7-abab-6a372508a1d5",
+      "name": "HTTP Request3"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Ollama1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a repository": {
+      "main": [
+        [
+          {
+            "node": "Code - Enrich github data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a repository1": {
+      "main": [
+        [
+          {
+            "node": "Code - Enrich github data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a repository2": {
+      "main": [
+        [
+          {
+            "node": "Code - Enrich github data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get a repository",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get a repository1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get a repository2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Ollama": {
+      "ai_embedding": [
+        [
+          {
+            "node": "search_portfolio",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code - Parse readme",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Enrich github data": {
+      "main": [
+        [
+          {
+            "node": "Code - Enrich data + portfolio data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Enrich data + portfolio data": {
+      "main": [
+        [
+          {
+            "node": "Code - Extract repo list",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Extract repo list": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Parse readme": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Code - Generate Q&A pair",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "search_portfolio": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker Cohere": {
+      "ai_reranker": [
+        [
+          {
+            "node": "search_portfolio",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Add metadata enhanced": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Smart chunking": {
+      "main": [
+        [
+          {
+            "node": "Code - Add metadata enhanced",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Generate Q&A pair": {
+      "main": [
+        [
+          {
+            "node": "Code - Smart chunking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Code - Generate embedding",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Generate embedding": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Code - Prepare qdrant query",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Prepare qdrant query": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Code - Build strict context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code - Build strict context": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "78c3cce6-aa3a-476d-8fd2-c27a9bbc6771",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a08242ff74e8376953c3c087e01e443ae9d0e59412700c788db014579c27c5a5"
+  },
+  "id": "4IaIqvx9bVraXWCf",
+  "tags": []
+}

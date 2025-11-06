@@ -42,18 +42,18 @@ services:
       - ./volumes/ollama_data:/root/.ollama
     networks:
       - n8n_network
-
-  sveltekit:
-    build: ./portfolio-sveltekit
-    container_name: portfolio
+  qdrant:
+    image: qdrant/qdrant:latest
     ports:
-      - "5173:5173"
+      - '6333:6333'
+      - '6334:6334'
+    volumes:
+      - qdrant_data:/qdrant/storage
     networks:
       - n8n_network
-    depends_on:
-      - ollama
-      - postgresql
-      - n8n
-      
+
+volumes:
+  qdrant_data:
+
 networks:
   n8n_network:
