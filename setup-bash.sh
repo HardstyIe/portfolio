@@ -242,6 +242,19 @@ if command -v ollama &>/dev/null; then
     fi
     sleep 1
   done
+
+  # docker run -d \
+  #   --name ollama \
+  #   --gpus all \
+  #   -v ./volumes/ollama_data:/root/.ollama \
+  #   -p 11434:11434 \
+  #   --network portfolio_n8n_network \
+  #   -e OLLAMA_GPU_LAYERS=20 \
+  #   -e OLLAMA_NUM_PARALLEL=4 \
+  #   --restart always \
+  #   --label com.docker.compose.project=portfolio \
+  #   --label com.docker.compose.service=ollama \
+  #   ollama/ollama:latest
   
 else
   warn "Commande 'ollama' non trouvée ; saisis manuellement si besoin."
