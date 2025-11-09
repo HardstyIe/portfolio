@@ -1,9 +1,10 @@
 <!-- src/lib/components/sections/Projects.svelte -->
 <script lang="ts">
 	import ProjectCard from '$lib/components/ui/ProjectCard.svelte';
+	import type { Project } from '$lib/types';
 	import { onMount } from 'svelte';
 
-	let projects = $state([]);
+	let projects = $state<Project[]>([]);
 	let loading = $state(true);
 	let selectedTag = $state('all');
 

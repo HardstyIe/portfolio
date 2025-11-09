@@ -4,7 +4,7 @@ import { json } from '@sveltejs/kit';
 
 export async function GET({ params }) {
 	try {
-		const project = await getProjectById(params.project_id);
+		const project = await getProjectById(params.id);
 
 		if (!project) {
 			return json({ error: 'Project not found' }, { status: 404 });

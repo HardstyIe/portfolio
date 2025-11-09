@@ -137,7 +137,7 @@
 
 	<!-- Retour à la liste -->
 	<div class="mt-12 text-center">
-		<a href="/projects" class="inline-block text-indigo-600 hover:text-indigo-700">
+		<a href="/#projects" class="inline-block text-indigo-600 hover:text-indigo-700">
 			← Retour aux projets
 		</a>
 	</div>
