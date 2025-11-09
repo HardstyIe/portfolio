@@ -11,13 +11,12 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -288,
-        2768
+        -32,
+        3088
       ],
-      "id": "832df1da-a6cf-4302-8e0c-8552502d21ab",
+      "id": "98f82272-0dc9-4038-8b5f-65ab8b9a3580",
       "name": "Webhook",
-      "webhookId": "ae3b0526-5247-460f-b7d2-22d4d45c3644",
-      "disabled": true
+      "webhookId": "ae3b0526-5247-460f-b7d2-22d4d45c3644"
     },
     {
       "parameters": {
@@ -34,33 +33,33 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1.3,
       "position": [
-        1296,
-        96
+        1616,
+        896
       ],
-      "id": "10b0417a-40a2-48a4-9e79-ac6f471456ca",
+      "id": "0f371a8a-0a9b-4c5e-8792-69604380b02a",
       "name": "Qdrant Vector Store",
       "credentials": {
         "qdrantApi": {
-          "id": "wAgEJxDqECOup1vn",
+          "id": "SpQtnfPrjWb8Ie2j",
           "name": "QdrantApi account"
         }
       }
     },
     {
       "parameters": {
-        "model": "mxbai-embed-large:latest"
+        "model": "nomic-embed-text:latest"
       },
       "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
       "typeVersion": 1,
       "position": [
-        1312,
-        320
+        1616,
+        1120
       ],
-      "id": "10301d91-3fff-40ab-8c40-86413c15960a",
+      "id": "1adf978a-1576-40ca-ab46-32f2d32394b8",
       "name": "Embeddings Ollama1",
       "credentials": {
         "ollamaApi": {
-          "id": "ypKRIIZgsoW0gEe9",
+          "id": "pbIGPlhM4BU9W6Ry",
           "name": "Ollama account"
         }
       }
@@ -72,10 +71,10 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        1440,
-        320
+        1696,
+        1120
       ],
-      "id": "73cf2e2f-f189-486a-bfb1-4e96fb66136a",
+      "id": "2902d306-1ecc-4a4f-9c54-b3dc84ed8e23",
       "name": "Default Data Loader"
     },
     {
@@ -96,15 +95,15 @@
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        -272,
-        -256
+        0,
+        64
       ],
-      "id": "f4a7dbab-0ee7-41a9-b90a-dfaa9e5ec099",
+      "id": "e3ba6e5f-b7ba-4a63-b386-8660d150e17a",
       "name": "Get a repository",
       "webhookId": "c4906ee0-fcbf-433f-afed-033d91d52c31",
       "credentials": {
         "githubApi": {
-          "id": "Ud4JafHAp11BS5HX",
+          "id": "nSLkl18feCRlmFwa",
           "name": "GitHub account"
         }
       }
@@ -127,15 +126,15 @@
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        -272,
-        -64
+        0,
+        256
       ],
-      "id": "18f075db-c126-4ff7-8440-2784bda90a64",
+      "id": "cebbf77a-24b8-4b14-b660-3b36a4b34574",
       "name": "Get a repository1",
       "webhookId": "c4906ee0-fcbf-433f-afed-033d91d52c31",
       "credentials": {
         "githubApi": {
-          "id": "Ud4JafHAp11BS5HX",
+          "id": "nSLkl18feCRlmFwa",
           "name": "GitHub account"
         }
       }
@@ -158,15 +157,15 @@
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        -272,
-        128
+        0,
+        448
       ],
-      "id": "ecc201ca-f957-4f02-b62d-1d77f9f464bd",
+      "id": "ee7a27f4-6c6a-4697-ab24-580814098912",
       "name": "Get a repository2",
       "webhookId": "c4906ee0-fcbf-433f-afed-033d91d52c31",
       "credentials": {
         "githubApi": {
-          "id": "Ud4JafHAp11BS5HX",
+          "id": "nSLkl18feCRlmFwa",
           "name": "GitHub account"
         }
       }
@@ -185,10 +184,10 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -496,
-        -64
+        -224,
+        256
       ],
-      "id": "42ff3eba-5b21-4266-9286-1a679cc5dbf3",
+      "id": "924274c6-e202-4086-944a-b529a7e9c305",
       "name": "Schedule Trigger"
     },
     {
@@ -200,15 +199,15 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        128,
-        2768
+        400,
+        3088
       ],
-      "id": "12b948eb-11c2-4e89-8509-c4f4ad9ec6e5",
+      "id": "c2ca8a27-6cff-4414-8491-ba5763f969e1",
       "name": "AI Agent"
     },
     {
       "parameters": {
-        "model": "deepseek-r1:8b",
+        "model": "llama3.1:8b",
         "options": {
           "temperature": 0.1,
           "topP": 0.5,
@@ -220,14 +219,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
       "typeVersion": 1,
       "position": [
-        64,
-        2976
+        336,
+        3296
       ],
-      "id": "43f5510f-493f-4b88-b43c-768f123698fe",
+      "id": "da4e38db-2e90-465d-9a45-7596ed4e913b",
       "name": "Ollama Chat Model",
       "credentials": {
         "ollamaApi": {
-          "id": "ypKRIIZgsoW0gEe9",
+          "id": "pbIGPlhM4BU9W6Ry",
           "name": "Ollama account"
         }
       }
@@ -237,33 +236,33 @@
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1.3,
       "position": [
-        192,
-        2976
+        464,
+        3296
       ],
-      "id": "a96a8c38-027e-4945-86d7-fe06460250bb",
+      "id": "be7fead5-75e6-4d95-997d-ed2a1be705d9",
       "name": "Postgres Chat Memory",
       "credentials": {
         "postgres": {
-          "id": "BV7Gc9ixD1t01UHh",
+          "id": "vGDX9O0UQr3J6EVh",
           "name": "Postgres account"
         }
       }
     },
     {
       "parameters": {
-        "model": "mxbai-embed-large:latest"
+        "model": "nomic-embed-text:latest"
       },
       "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
       "typeVersion": 1,
       "position": [
-        336,
-        3184
+        608,
+        3504
       ],
-      "id": "eb6b2553-afb9-432e-aa61-84bc950fa13f",
+      "id": "9ae72e6b-888c-433c-9d3c-6be611af7cc4",
       "name": "Embeddings Ollama",
       "credentials": {
         "ollamaApi": {
-          "id": "ypKRIIZgsoW0gEe9",
+          "id": "pbIGPlhM4BU9W6Ry",
           "name": "Ollama account"
         }
       }
@@ -304,10 +303,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -112,
-        2768
+        160,
+        3088
       ],
-      "id": "ab316796-6740-4ec5-9be7-07ed2d5c6135",
+      "id": "bacb18d6-56b9-4049-a410-0d0cbd795949",
       "name": "Edit Fields"
     },
     {
@@ -337,10 +336,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        624,
-        -144
+        896,
+        176
       ],
-      "id": "7bb948a6-a39e-4f3a-a9ec-9128851f844f",
+      "id": "c141cdee-2b05-4e96-9b30-93f663e6049b",
       "name": "HTTP Request",
       "retryOnFail": true,
       "alwaysOutputData": false,
@@ -353,10 +352,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -48,
-        -64
+        224,
+        256
       ],
-      "id": "c6a14a2c-993d-40e4-ae32-6e402472927d",
+      "id": "83d6c49a-6d22-4bcf-bda0-fddd29ace2ad",
       "name": "Code - Enrich github data"
     },
     {
@@ -366,10 +365,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        176,
-        -64
+        448,
+        256
       ],
-      "id": "2919efd8-abeb-4b0e-bfee-c6a16423e8c0",
+      "id": "f2d6697c-5353-4cd7-8d69-f0aa42b4a48d",
       "name": "Code - Enrich data + portfolio data"
     },
     {
@@ -379,10 +378,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        400,
-        -144
+        672,
+        176
       ],
-      "id": "2c36f255-c748-4c5f-9d44-022fc5f0b111",
+      "id": "7e90d8b6-c38e-4a80-bd2b-9120473e15c3",
       "name": "Code - Extract repo list"
     },
     {
@@ -392,10 +391,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        848,
-        -144
+        1120,
+        176
       ],
-      "id": "64af0505-fb75-4c1c-a30e-7767693ae638",
+      "id": "312fb3a2-ee98-46d9-8b1a-38a61d18019b",
       "name": "Code - Parse readme"
     },
     {
@@ -406,10 +405,10 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        400,
-        96
+        672,
+        416
       ],
-      "id": "b6f38837-fe0c-45f6-9ece-ae1be9606ae9",
+      "id": "3a35459c-55da-4390-8c57-71f4c18af70d",
       "name": "Aggregate"
     },
     {
@@ -429,14 +428,14 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
       "typeVersion": 1.3,
       "position": [
-        320,
-        2976
+        592,
+        3296
       ],
-      "id": "ede5ab2c-0771-4885-920e-909c22f01aab",
+      "id": "b550824c-e0dd-4f1e-a989-347f9086be60",
       "name": "search_portfolio",
       "credentials": {
         "qdrantApi": {
-          "id": "wAgEJxDqECOup1vn",
+          "id": "SpQtnfPrjWb8Ie2j",
           "name": "QdrantApi account"
         }
       }
@@ -449,10 +448,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        512,
-        2768
+        784,
+        3088
       ],
-      "id": "2437af71-a505-4306-b4e9-dcd0360f7f2f",
+      "id": "ffd43a27-bcfb-4bb3-b920-1e8d2ab58639",
       "name": "Respond to Webhook"
     },
     {
@@ -460,14 +459,14 @@
       "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
       "typeVersion": 1,
       "position": [
-        464,
-        3184
+        736,
+        3504
       ],
-      "id": "24e18adc-7153-440a-9686-2eb18541cf11",
+      "id": "02ba4cf8-c3e2-4bb9-b48f-102263e9de38",
       "name": "Reranker Cohere",
       "credentials": {
         "cohereApi": {
-          "id": "zB4TyH4qZdTKk1CU",
+          "id": "EsImBaffyr5zE9qX",
           "name": "CohereApi account"
         }
       }
@@ -479,10 +478,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1072,
-        96
+        1344,
+        416
       ],
-      "id": "a074335c-8eb4-4e39-8fa8-0b3ce4bb6f1e",
+      "id": "85876163-fad5-49d2-bdc2-a2cfee4b0ba4",
       "name": "Code - Add metadata enhanced"
     },
     {
@@ -492,10 +491,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        848,
-        96
+        1120,
+        416
       ],
-      "id": "38bef03e-9268-45a2-9a27-1b8d87075d8e",
+      "id": "8852a60c-9dbc-4039-80af-f4252aacba09",
       "name": "Code - Smart chunking"
     },
     {
@@ -505,10 +504,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        624,
-        96
+        896,
+        416
       ],
-      "id": "0f4909c9-af7f-4377-b0b0-7684ae898dbe",
+      "id": "a321a988-7ed1-4987-9788-548c1107d690",
       "name": "Code - Generate Q&A pair"
     },
     {
@@ -518,10 +517,10 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.3,
       "position": [
-        -704,
-        1168
+        -432,
+        1488
       ],
-      "id": "514a6595-c20f-4eba-97c1-9e18a100321b",
+      "id": "40d4bdb0-0dc5-47e8-b0f6-7ab1f6aacab4",
       "name": "When chat message received",
       "webhookId": "0f353f5a-fa1a-4c5d-8d31-6607fbe4adc1"
     },
@@ -532,10 +531,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -544,
-        1168
+        -272,
+        1488
       ],
-      "id": "ee174701-4c27-44fc-85db-1b4c87e54e64",
+      "id": "a71249d3-91be-4cb5-9075-4658666c1e2b",
       "name": "Code - Generate embedding"
     },
     {
@@ -564,10 +563,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -336,
-        1168
+        -64,
+        1488
       ],
-      "id": "0cfdf3a7-7fd7-42f0-8c78-645df0eb4c1c",
+      "id": "e69e0e75-f154-46f4-b2bf-8e03d9540809",
       "name": "HTTP Request1"
     },
     {
@@ -577,10 +576,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -128,
-        1168
+        144,
+        1488
       ],
-      "id": "f7898d86-3010-493d-a6f8-8fcc7f3b2207",
+      "id": "f23ce838-e4d0-408b-8805-bd7c2c73ddf8",
       "name": "Code - Prepare qdrant query"
     },
     {
@@ -617,10 +616,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        160,
-        1168
+        432,
+        1488
       ],
-      "id": "4af51095-4d56-4e93-883c-107401884ee3",
+      "id": "a0ff0f83-6ead-4aa3-8c63-8a1448bc53df",
       "name": "HTTP Request2"
     },
     {
@@ -630,10 +629,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        336,
-        1168
+        608,
+        1488
       ],
-      "id": "bbba1151-c373-4a12-be51-390a04a0cad0",
+      "id": "f72a5636-97c8-4769-a699-114c20b012ca",
       "name": "Code - Build strict context"
     },
     {
@@ -670,11 +669,35 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        496,
-        1168
+        768,
+        1488
       ],
-      "id": "de77479f-7d48-4ce7-abab-6a372508a1d5",
+      "id": "9c1a5a8a-9fef-4d08-8388-2ce0a3f068cd",
       "name": "HTTP Request3"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1216,
+        896
+      ],
+      "id": "2e3ae62b-8a58-4938-a665-a7393860c74c",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "const portfolioProjects = {\n  \"portfolio\": {\n    \"owner\": \"Dylan Duchemin\",\n    \"version\": \"1.0.0\",\n    \"last_updated\": \"2024-11-09\"\n  },\n  \"projects\": [\n    {\n      \"id\": \"salaires-app\",\n      \"name\": \"Application de Gestion des Salaires\",\n      \"status\": \"production\",\n      \"type\": \"data-application\",\n      \"short_description\": \"Application interactive avec interface Streamlit permettant de filtrer et visualiser les données salariales.\",\n      \"full_description\": \"Application interactive de gestion des salaires développée avec Streamlit. Elle permet de calculer automatiquement les salaires mensuels avec heures supplémentaires, d'exporter les données en CSV, et d'afficher des statistiques par filiale et globales.\",\n      \"features\": [\n        \"Calcul automatique des salaires mensuels avec heures supplémentaires\",\n        \"Export des données en format CSV\",\n        \"Interface interactive avec filtres\",\n        \"Statistiques par filiale et globales\",\n        \"Visualisation avec Pandas\",\n        \"Gestion des heures supplémentaires (majoration 1.5x)\"\n      ],\n      \"technologies\": {\n        \"backend\": [\"Python 3.8+\", \"Pandas\", \"JSON\"],\n        \"frontend\": [\"Streamlit\", \"Dataframes interactifs\"],\n        \"tools\": [\"CSV Export\", \"Data Visualization\"]\n      },\n      \"tags\": [\"Python\", \"Streamlit\", \"Pandas\", \"JSON\", \"CSV\", \"Data Analysis\"],\n      \"tech_stack\": [\"Python\", \"Streamlit\", \"Pandas\", \"JSON\", \"CSV\"],\n      \"highlights\": [\n        \"Support de plusieurs filiales\",\n        \"Gestion de différents postes\",\n        \"Salaire moyen global : 7229,16€\",\n        \"Interface trilingue\"\n      ],\n      \"url\": null,\n      \"github_url\": null,\n      \"demo_url\": null,\n      \"language\": \"Python\",\n      \"category\": \"ai_data\"\n    },\n    {\n      \"id\": \"ducsman-hotel\",\n      \"name\": \"DUCSMAN - Hôtel de Luxe Paris\",\n      \"status\": \"production\",\n      \"type\": \"website\",\n      \"short_description\": \"Site vitrine pour un hôtel 5 étoiles fictif basé à Paris. Projet de groupe avec design élégant et responsive.\",\n      \"full_description\": \"Site vitrine complet pour un hôtel 5 étoiles fictif situé à Paris. Projet de groupe mettant l'accent sur une expérience utilisateur élégante, un design responsive, et une navigation fluide. Utilisation de SASS pour une architecture CSS modulaire.\",\n      \"features\": [\n        \"Page d'accueil avec présentation\",\n        \"Galerie des chambres détaillée\",\n        \"Formulaire de contact fonctionnel\",\n        \"Navigation fluide\",\n        \"Design responsive\",\n        \"Animations CSS élégantes\"\n      ],\n      \"technologies\": {\n        \"frontend\": [\"HTML5\", \"CSS3\", \"SASS\", \"JavaScript\"],\n        \"design\": [\"Responsive Design\", \"Animations CSS\"],\n        \"tools\": [\"Git\", \"GitHub\", \"Vercel\"]\n      },\n      \"tags\": [\"HTML5\", \"CSS3\", \"SASS\", \"JavaScript\", \"Site Vitrine\", \"Responsive\"],\n      \"tech_stack\": [\"HTML5\", \"CSS3\", \"SASS\", \"JavaScript\"],\n      \"highlights\": [\n        \"Design moderne et élégant\",\n        \"Architecture SASS modulaire\",\n        \"Code HTML sémantique\",\n        \"Optimisation des performances\"\n      ],\n      \"url\": \"https://projet-groupe-ducman.vercel.app/\",\n      \"github_url\": \"https://github.com/HardstyIe/Projet-groupe-Ducman\",\n      \"demo_url\": \"https://projet-groupe-ducman.vercel.app/\",\n      \"homepage\": \"https://projet-groupe-ducman.vercel.app/\",\n      \"language\": \"JavaScript\",\n      \"category\": \"frontend\"\n    },\n    {\n      \"id\": \"weather-app\",\n      \"name\": \"Application Météo\",\n      \"status\": \"production\",\n      \"type\": \"web-application\",\n      \"short_description\": \"Application météo moderne permettant d'afficher les prévisions météorologiques actuelles avec géolocalisation automatique.\",\n      \"full_description\": \"Application météo moderne développée en React permettant d'afficher les prévisions météorologiques actuelles avec géolocalisation automatique et recherche manuelle de villes. Intégration avec l'API OpenWeather pour des données en temps réel.\",\n      \"features\": [\n        \"Affichage température actuelle et ressentie\",\n        \"Géolocalisation automatique\",\n        \"Recherche manuelle de villes\",\n        \"Prévisions météo détaillées\",\n        \"Interface moderne et intuitive\",\n        \"Données en temps réel\"\n      ],\n      \"technologies\": {\n        \"frontend\": [\"React 18\", \"JavaScript ES6+\", \"CSS3\"],\n        \"api\": [\"OpenWeather API\", \"Geolocation API\"],\n        \"deployment\": [\"Vercel\"],\n        \"tools\": [\"Create React App\", \"Git\"]\n      },\n      \"tags\": [\"React\", \"JavaScript\", \"OpenWeather API\", \"Vercel\", \"API REST\"],\n      \"tech_stack\": [\"React\", \"JavaScript\", \"OpenWeather API\", \"CSS3\"],\n      \"highlights\": [\n        \"Composants React réutilisables\",\n        \"Gestion d'état avec hooks\",\n        \"Appels API asynchrones\",\n        \"Error handling et loading states\"\n      ],\n      \"url\": \"https://weather-app-eight-sigma-31.vercel.app/\",\n      \"github_url\": \"https://github.com/HardstyIe/weather-app\",\n      \"demo_url\": \"https://weather-app-eight-sigma-31.vercel.app/\",\n      \"homepage\": \"https://weather-app-eight-sigma-31.vercel.app/\",\n      \"language\": \"JavaScript\",\n      \"category\": \"frontend\"\n    }\n  ]\n};\n\n// Transformer en format compatible avec ton pipeline existant\nconst output = [];\n\nfor (const project of portfolioProjects.projects) {\n  // 1. Document principal (équivalent à repository_overview)\n  output.push({\n    json: {\n      pageContent: `# ${project.name}\n\n**Description:** ${project.short_description}\n\n**Langage principal:** ${project.language}\n**Type:** ${project.category}\n**URL:** ${project.url || 'Non disponible'}\n**GitHub:** ${project.github_url || 'Non disponible'}\n**Homepage:** ${project.homepage || 'Non disponible'}\n**Statut:** ${project.status}\n\n**Fonctionnalités principales:**\n${project.features.map(f => `- ${f}`).join('\\n')}\n\n**Points forts:**\n${project.highlights.map(h => `- ${h}`).join('\\n')}\n\n**Stack technique:** ${project.tech_stack.join(', ')}`,\n      \n      metadata: {\n        type: \"repository_overview\",\n        repo_name: project.name,\n        repo_full_name: project.id,\n        language: project.language,\n        url: project.url,\n        homepage: project.homepage,\n        github_url: project.github_url,\n        created_at: new Date().toISOString(),\n        updated_at: new Date().toISOString(),\n        topics: project.tags,\n        category: project.category\n      }\n    }\n  });\n  \n  // 2. Document technique détaillé\n  output.push({\n    json: {\n      pageContent: `Projet: ${project.name}\n\nStack technique: ${project.tech_stack.join(', ')}\n\nDescription: ${project.full_description}\n\n${project.homepage ? `Demo disponible: ${project.homepage}` : 'Pas de demo'}\n\nType de projet: ${project.category}\nLangage: ${project.language}\n\nTechnologies utilisées:\n${Object.entries(project.technologies).map(([cat, techs]) => \n  `${cat}: ${techs.join(', ')}`\n).join('\\n')}`,\n      \n      metadata: {\n        type: \"technical_details\",\n        repo_name: project.name,\n        language: project.language,\n        tech_stack: project.tech_stack,\n        category: project.category,\n        has_demo: !!project.homepage\n      }\n    }\n  });\n  \n  // 3. Document skills showcase\n  output.push({\n    json: {\n      pageContent: `Compétences techniques démontrées dans le projet \"${project.name}\":\n\n${project.tags.map(skill => `- ${skill}`).join('\\n')}\n\nDescription du projet: ${project.full_description}\n\nCe projet illustre ma maîtrise de ${project.language} et mon expérience en ${project.category}.\n\nPoints forts:\n${project.highlights.map(h => `- ${h}`).join('\\n')}`,\n      \n      metadata: {\n        type: \"skills_showcase\",\n        repo_name: project.name,\n        language: project.language,\n        skills: project.tags,\n        project_type: project.category\n      }\n    }\n  });\n}\n\n// Ajouter les documents de contexte global\noutput.push({\n  json: {\n    pageContent: `# Portfolio de développeur\n\nJe suis un développeur full-stack avec ${portfolioProjects.projects.length} projets principaux.\n\n**Langages maîtrisés:** ${[...new Set(portfolioProjects.projects.map(p => p.language))].join(', ')}\n\n**Technologies et compétences:** ${[...new Set(portfolioProjects.projects.flatMap(p => p.tags))].join(', ')}\n\n**Domaines d'expertise:**\n${[...new Set(portfolioProjects.projects.map(p => p.category))].map(cat => `- ${cat}`).join('\\n')}\n\n**Profil GitHub:** https://github.com/HardstyIe\n\nMon portfolio démontre une expertise variée en développement web, data science, et automatisation.`,\n    \n    metadata: {\n      type: \"portfolio_overview\",\n      category: \"about\",\n      importance: \"high\",\n      total_projects: portfolioProjects.projects.length\n    }\n  }\n});\n\noutput.push({\n  json: {\n    pageContent: `# Compétences techniques\n\n## Langages de programmation\n${[...new Set(portfolioProjects.projects.map(p => p.language))].map(lang => `- ${lang}`).join('\\n')}\n\n## Stack technique\n- **Frontend:** React, Next.js, TypeScript, TailwindCSS, HTML5, CSS3, SASS\n- **Backend:** Node.js, Express, Python, Streamlit\n- **DevOps:** Docker, n8n, CI/CD, Automatisation\n- **Data & IA:** RAG, Vector Databases (Qdrant), LLMs, Ollama, Pandas\n- **Databases:** PostgreSQL, MongoDB\n\n## Méthodologies\n- Architecture modulaire\n- RESTful APIs\n- Containerisation avec Docker\n- Automatisation de workflows\n- Design responsive`,\n    \n    metadata: {\n      type: \"skills_comprehensive\",\n      category: \"technical\",\n      importance: \"high\"\n    }\n  }\n});\n\noutput.push({\n  json: {\n    pageContent: `# Approche et philosophie\n\nJe privilégie:\n- Le code propre, maintenable et bien documenté\n- L'automatisation des tâches répétitives\n- Les technologies modernes et performantes\n- L'architecture scalable et modulaire\n- Le déploiement avec Docker et conteneurs\n\nMes projets reflètent une approche pragmatique du développement, avec un focus sur l'efficacité et la qualité.`,\n    \n    metadata: {\n      type: \"philosophy\",\n      category: \"about\",\n      importance: \"medium\"\n    }\n  }\n});\n\nconsole.log(`✅ ${output.length} documents générés pour ${portfolioProjects.projects.length} projets`);\n\nreturn output;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1424,
+        896
+      ],
+      "id": "a6839693-8e3c-419f-8961-0db16ab5b5ef",
+      "name": "Code in JavaScript"
     }
   ],
   "pinData": {},
@@ -916,13 +939,7 @@
     },
     "Code - Add metadata enhanced": {
       "main": [
-        [
-          {
-            "node": "Qdrant Vector Store",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Code - Smart chunking": {
@@ -1012,17 +1029,39 @@
           }
         ]
       ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Qdrant Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "78c3cce6-aa3a-476d-8fd2-c27a9bbc6771",
+  "versionId": "84a36fb8-ff6b-4088-9eb4-a332c326ea76",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "a08242ff74e8376953c3c087e01e443ae9d0e59412700c788db014579c27c5a5"
   },
-  "id": "4IaIqvx9bVraXWCf",
+  "id": "2LnZGsjAM7zUkUwT",
   "tags": []
 }
