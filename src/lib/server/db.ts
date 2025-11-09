@@ -20,14 +20,15 @@ export async function saveMessage({
 	role: string;
 	content: string;
 }) {
-	await pool.query(
-		`INSERT INTO messages(user_id, role, content, created_at) VALUES($1, $2, $3, NOW())`,
-		[userId, role, content]
-	);
+	await pool.query('INSERT INTO messages(user_id, role, content) VALUES($1, $2, $3)', [
+		userId,
+		role,
+		content
+	]);
 }
 
 export async function getMessages(userId: string) {
-	const res = await pool.query(`SELECT * FROM messages WHERE user_id=$1 ORDER BY created_at`, [
+	const res = await pool.query('SELECT * FROM messages WHERE user_id = $1 ORDER BY created_at', [
 		userId
 	]);
 	return res.rows;
