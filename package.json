@@ -40,6 +40,7 @@
     "vite": "^7.1.10"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
     "@types/pg": "^8.15.6",
     "chromadb": "^3.1.0",
     "dompurify": "^3.3.0",
