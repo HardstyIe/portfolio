@@ -1,12 +1,21 @@
+<!-- src/routes/+layout.svelte -->
 <script lang="ts">
-	import favicon from '$lib/assets/favicon.svg';
+	import ChatWidget from '$lib/components/chat/ChatWidget.svelte';
+	import Footer from '$lib/components/ui/Footer.svelte';
+	import Navbar from '$lib/components/ui/Navbar.svelte';
 	import '../app.css';
 
 	let { children } = $props();
 </script>
 
-<svelte:head>
-	<link rel="icon" href={favicon} />
-</svelte:head>
+<div class="flex min-h-screen flex-col bg-gray-50">
+	<Navbar />
 
-{@render children()}
+	<main class="flex-1">
+		{@render children()}
+	</main>
+
+	<Footer />
+
+	<ChatWidget />
+</div>
