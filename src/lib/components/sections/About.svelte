@@ -6,7 +6,7 @@
 			<!-- Photo -->
 			<div class="flex justify-center">
 				<img
-					src="/profile.jpg"
+					src="/assets/profile.jpg"
 					alt="Profile"
 					class="h-64 w-64 rounded-full object-cover shadow-xl"
 				/>
@@ -14,12 +14,12 @@
 			<!-- Description -->
 			<div class="flex flex-col justify-center">
 				<p class="mb-6 text-lg text-gray-700">
-					Passionné par le développement web depuis mes débuts en 2020, je me spécialise dans la
+					Passionné par le développement web depuis mes débuts en 2023, je me spécialise dans la
 					création d'applications performantes et élégantes.
 				</p>
 				<p class="mb-6 text-lg text-gray-700">
 					Formé en développement web, j'ai acquis une expertise solide en JavaScript/TypeScript,
-					React, Svelte et Node.js.
+					Svelte et Node.js.
 				</p>
 				<p class="text-lg text-gray-700">
 					Actuellement en recherche de nouvelles opportunités pour mettre mes compétences au service
@@ -28,7 +28,7 @@
 				<!-- Liens sociaux -->
 				<div class="mt-8 flex gap-4">
 					<a
-						href="https://github.com/ton-username"
+						href="https://github.com/HardstyIe"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="rounded-full bg-gray-900 p-3 text-white transition-colors hover:bg-gray-700"
@@ -44,7 +44,7 @@
 					</a>
 
 					<a
-						href="https://linkedin.com/in/ton-username"
+						href="https://www.linkedin.com/in/dylan-duchemin-528612265/"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="rounded-full bg-blue-600 p-3 text-white transition-colors hover:bg-blue-700"

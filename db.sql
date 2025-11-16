@@ -1,6 +1,6 @@
 -- ============================================
 -- SCRIPT D'IMPORT COMPLET - PORTFOLIO PROJECTS
--- Date: 2024-11-09
+-- Date: 2024-11-16
 -- ============================================
 
 -- Suppression de la table si elle existe (ATTENTION: supprime toutes les données)
@@ -44,6 +44,7 @@ CREATE TABLE messages (
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 -- ============================================
 -- CRÉATION DES INDEX POUR PERFORMANCES
 -- ============================================
@@ -113,11 +114,11 @@ INSERT INTO projects (
     'Calcul du salaire moyen global : 7229,16€',
     'Interface trilingue (français)'
   ],
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  '/projects/salaires.jpg',
+  'https://brief-simplon.streamlit.app/',
+  'https://github.com/HardstyIe/brief_simplon_employee_data',
+  'https://brief-simplon.streamlit.app/',
+  'https://brief-simplon.streamlit.app/',
+  '/assets/salaires.webp',
   'Python',
   'ai_data',
   true,
@@ -159,7 +160,7 @@ INSERT INTO projects (
   'https://github.com/HardstyIe/Projet-groupe-Ducman',
   'https://projet-groupe-ducman.vercel.app/',
   'https://projet-groupe-ducman.vercel.app/',
-  '/projects/ducsman.jpg',
+  '/assets/ducsman.webp',
   'JavaScript',
   'frontend',
   true,
@@ -175,26 +176,24 @@ INSERT INTO projects (
   'production',
   'web-application',
   'Application météo moderne permettant d''afficher les prévisions météorologiques actuelles avec géolocalisation automatique.',
-  'Application météo moderne développée en React permettant d''afficher les prévisions météorologiques actuelles avec géolocalisation automatique de l''utilisateur et recherche manuelle de villes. Intégration avec l''API OpenWeather pour des données en temps réel. Interface intuitive et responsive.',
+  'Application météo moderne développée en JavaScript permettant d''afficher les prévisions météorologiques actuelles avec géolocalisation automatique de l''utilisateur et recherche manuelle de villes. Intégration avec l''API OpenWeather pour des données en temps réel. Interface intuitive et responsive.',
   '[
     "Affichage température actuelle et ressentie",
-    "Géolocalisation automatique de l''utilisateur",
+    "Géolocalisation automatique",
     "Recherche manuelle de villes",
     "Prévisions météo détaillées",
     "Interface moderne et intuitive",
     "Données en temps réel via OpenWeather API"
   ]'::jsonb,
   '{
-    "frontend": ["React 18", "JavaScript ES6+", "CSS3"],
+    "frontend": ["JavaScript ES6+", "CSS3"],
     "api": ["OpenWeather API", "Geolocation API"],
     "deployment": ["Vercel"],
-    "tools": ["Create React App", "Git"]
+    "tools": ["Git"]
   }'::jsonb,
-  ARRAY['React', 'JavaScript', 'OpenWeather API', 'Vercel', 'API REST'],
-  ARRAY['React', 'JavaScript', 'OpenWeather API', 'CSS3'],
+  ARRAY['JavaScript', 'OpenWeather API', 'Vercel', 'API REST'],
+  ARRAY['JavaScript', 'OpenWeather API', 'CSS3'],
   ARRAY[
-    'Composants React réutilisables',
-    'Gestion d''état avec hooks (useState, useEffect)',
     'Appels API asynchrones',
     'Error handling et loading states'
   ],
@@ -202,11 +201,55 @@ INSERT INTO projects (
   'https://github.com/HardstyIe/weather-app',
   'https://weather-app-eight-sigma-31.vercel.app/',
   'https://weather-app-eight-sigma-31.vercel.app/',
-  '/projects/weather.jpg',
+  '/assets/weather.webp',
   'JavaScript',
   'frontend',
   true,
   3
+),
+
+-- ============================================
+-- PROJET 4: Devatopia - Agence Web
+-- ============================================
+(
+  'devatopia',
+  'Devatopia - Agence Web',
+  'production',
+  'website',
+  'Refonte moderne du site vitrine d''une agence web spécialisée en développement mobile et web.',
+  'Refonte complète du site vitrine d''une agence de développement web dans le cadre d''un projet de formation. En 2 semaines, j''ai modernisé et optimisé leur site existant en respectant leur identité UI/UX tout en améliorant les performances et l''expérience utilisateur. Le site présente les services de l''agence, l''équipe, et intègre un formulaire de contact fonctionnel.',
+  '[
+    "Design moderne et responsive",
+    "Formulaire de contact avec envoi d''email (Nodemailer)",
+    "Section présentation de l''équipe",
+    "Présentation des services et technologies",
+    "Galerie de projets réalisés",
+    "Mentions légales et politique de confidentialité intégrées"
+  ]'::jsonb,
+  '{
+    "frontend": ["SvelteKit", "TypeScript", "TailwindCSS", "DaisyUI"],
+    "backend": ["Node.js", "Nodemailer"],
+    "deployment": ["Vercel"],
+    "tools": ["Vite", "PostCSS"]
+  }'::jsonb,
+  ARRAY['SvelteKit', 'TypeScript', 'TailwindCSS', 'DaisyUI', 'Nodemailer', 'Vercel'],
+  ARRAY['SvelteKit', 'TypeScript', 'TailwindCSS', 'DaisyUI', 'Nodemailer'],
+  ARRAY[
+    'Refonte complète en 2 semaines',
+    'Respect de l''identité UI/UX de l''agence',
+    'Architecture SvelteKit moderne et performante',
+    'Formulaire de contact avec validation et envoi d''email',
+    'Design responsive et optimisé'
+  ],
+  'https://portfolio-deva.vercel.app/',
+  'https://github.com/HardstyIe/portfolio-deva',
+  'https://portfolio-deva.vercel.app/',
+  'https://portfolio-deva.vercel.app/',
+  '/assets/devatopia.webp',
+  'TypeScript',
+  'frontend',
+  true,
+  4
 );
 
 -- ============================================
@@ -221,50 +264,3 @@ SELECT
   url
 FROM projects
 ORDER BY order_index;
-
--- ============================================
--- REQUÊTES UTILES POUR LA MAINTENANCE
--- ============================================
-
--- Compter les projets par catégorie
--- SELECT category, COUNT(*) as nb_projects FROM projects GROUP BY category;
-
--- Lister les projets featured
--- SELECT project_id, name FROM projects WHERE is_featured = true;
-
--- Rechercher un projet par tag
--- SELECT name, tags FROM projects WHERE 'React' = ANY(tags);
-
--- Mettre à jour un projet
--- UPDATE projects SET status = 'archived' WHERE project_id = 'weather-app';
-
--- Ajouter un nouveau projet (template)
-/*
-INSERT INTO projects (
-  project_id, name, status, type, short_description, full_description,
-  features, technologies, tags, tech_stack, highlights,
-  url, github_url, demo_url, homepage, image_url,
-  language, category, is_featured, order_index
-) VALUES (
-  'nouveau-projet',
-  'Nom du Projet',
-  'production',
-  'web-application',
-  'Description courte',
-  'Description complète',
-  '["Feature 1", "Feature 2"]'::jsonb,
-  '{"frontend": ["React"], "backend": ["Node.js"]}'::jsonb,
-  ARRAY['React', 'Node.js'],
-  ARRAY['React', 'Node.js', 'PostgreSQL'],
-  ARRAY['Point fort 1', 'Point fort 2'],
-  'https://demo.example.com',
-  'https://github.com/user/repo',
-  'https://demo.example.com',
-  'https://demo.example.com',
-  '/projects/image.jpg',
-  'JavaScript',
-  'fullstack',
-  false,
-  4
-);
-*/
