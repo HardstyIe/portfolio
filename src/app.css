@@ -16,8 +16,3 @@
 .animate-float {
 	animation: float 3s ease-in-out infinite;
 }
-
-/* Smooth scroll */
-html {
-	scroll-behavior: smooth;
-}

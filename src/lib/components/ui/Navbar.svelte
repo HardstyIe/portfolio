@@ -45,12 +45,12 @@
 			<ul class="hidden gap-8 md:flex">
 				{#each sections as section}
 					<li>
-						<button
-							onclick={() => scrollToSection(section.id)}
+						<a
+							href={`#${section.id}`}
 							class="text-gray-700 transition-colors hover:text-indigo-600"
 						>
 							{section.label}
-						</button>
+						</a>
 					</li>
 				{/each}
 			</ul>

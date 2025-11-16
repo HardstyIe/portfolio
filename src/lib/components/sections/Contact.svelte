@@ -1,5 +1,6 @@
 <!-- src/lib/components/sections/Contact.svelte -->
 <script lang="ts">
+	import { textToHexEntities } from '$lib/utils/encodeMail';
 	import { Github, Linkedin, Mail, MapPin } from 'lucide-svelte';
 
 	let formData = $state({
@@ -99,10 +100,10 @@
 					<div>
 						<p class="font-medium">Email</p>
 						<a
-							href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#117;&#99;&#104;&#101;&#109;&#105;&#110;&#100;&#121;&#108;&#97;&#110;&#53;&#57;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;"
+							href={textToHexEntities('mailto:duchemindylan59@gmail.com')}
 							class="text-indigo-200 transition-colors hover:text-white"
 						>
-							duchemindylan59@gmail.com
+							{@html textToHexEntities('duchemindylan59@gmail.com')}
 						</a>
 					</div>
 				</div>
