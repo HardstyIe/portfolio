@@ -5,7 +5,7 @@
 
 <section
 	id="hero"
-	class="flex min-h-screen items-center justify-center bg-linear-to-br from-indigo-50 to-purple-50 px-6"
+	class="flex min-h-screen snap-center items-center justify-center bg-linear-to-br from-indigo-50 to-purple-50 px-6"
 >
 	<div class="text-center">
 		<!-- Titre principal -->

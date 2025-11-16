@@ -23,7 +23,10 @@
 	}
 </script>
 
-<section id="contact" class="bg-linear-to-br from-indigo-600 to-purple-600 px-6 py-20 text-white">
+<section
+	id="contact"
+	class="flex min-h-screen snap-center items-center justify-center bg-linear-to-br from-indigo-600 to-purple-600 px-6 py-20 text-white"
+>
 	<div class="container mx-auto max-w-4xl">
 		<h2 class="mb-4 text-center text-4xl font-bold">Discutons de votre projet</h2>
 		<p class="mb-12 text-center text-lg text-indigo-100">

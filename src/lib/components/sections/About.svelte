@@ -1,5 +1,5 @@
 <!-- src/lib/components/sections/About.svelte -->
-<section id="about" class="snap-center px-6 py-20">
+<section id="about" class="flex min-h-screen snap-center items-center justify-center px-6 py-20">
 	<div class="container mx-auto max-w-4xl">
 		<h2 class="mb-12 text-center text-4xl font-bold text-gray-900">À propos de moi</h2>
 		<div class="grid gap-12 md:grid-cols-2">

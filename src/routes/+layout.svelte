@@ -8,10 +8,10 @@
 	let { children } = $props();
 </script>
 
-<div class="flex min-h-screen flex-col scroll-smooth bg-gray-50">
+<div class="flex min-h-screen flex-col bg-gray-50">
 	<Navbar />
 
-	<main class="flex-1 snap-y snap-mandatory">
+	<main class="flex-1">
 		{@render children()}
 	</main>
 
