@@ -1,5 +1,5 @@
 <!-- src/lib/components/sections/About.svelte -->
-<section id="about" class="flex min-h-screen snap-center items-center justify-center px-6 py-20">
+<section id="about" class="flex min-h-screen items-center justify-center px-6 py-20">
 	<div class="container mx-auto max-w-4xl">
 		<h2 class="mb-12 text-center text-4xl font-bold text-gray-900">À propos de moi</h2>
 		<div class="grid gap-12 md:grid-cols-2">
@@ -18,7 +18,7 @@
 					création d'applications performantes et élégantes.
 				</p>
 				<p class="mb-6 text-lg text-gray-700">
-					Formé en développement web, j'ai acquis une expertise solide en JavaScript/TypeScript,
+					Formé en développement web, j'ai acquis une expérience solide en JavaScript/TypeScript,
 					Svelte et Node.js.
 				</p>
 				<p class="text-lg text-gray-700">

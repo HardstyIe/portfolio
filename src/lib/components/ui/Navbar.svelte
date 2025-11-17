@@ -46,7 +46,7 @@
 				{#each sections as section}
 					<li>
 						<a
-							href={`#${section.id}`}
+							href={`/#${section.id}`}
 							class="text-gray-700 transition-colors hover:text-indigo-600"
 						>
 							{section.label}
