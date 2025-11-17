@@ -52,7 +52,7 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
       "typeVersion": 1,
       "position": [
-        424,
+        432,
         1056
       ],
       "id": "d3d9ecd4-d0d8-4a15-80a7-a26c403412b0",
@@ -71,7 +71,7 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        552,
+        560,
         1056
       ],
       "id": "cd310cd9-f6dd-4d21-b2f2-3b7ddcbe4c19",
@@ -86,7 +86,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        472,
+        480,
         1472
       ],
       "id": "beec7feb-40ab-4743-abc0-3730f18816b4",
@@ -220,7 +220,7 @@
       "typeVersion": 1,
       "position": [
         -32,
-        936
+        944
       ],
       "id": "532d56fb-a942-4df1-b18e-6563c4ccf160",
       "name": "When clicking ‘Execute workflow’"
@@ -233,7 +233,7 @@
       "typeVersion": 2,
       "position": [
         192,
-        936
+        944
       ],
       "id": "58e9eebc-dcba-4793-a45c-8a43d8dea633",
       "name": "Code in JavaScript"
