@@ -39,14 +39,9 @@
 			{/each}
 		</div>
 
-		<!-- Liens -->
-		<div class="flex gap-3 text-sm">
-			{#if project.demo_url}
-				<span class="text-indigo-600 hover:text-indigo-700"> 🔗 Demo </span>
-			{/if}
-			{#if project.github_url}
-				<span class="text-gray-700 hover:text-gray-900"> 💻 Code </span>
-			{/if}
+		<!-- Liens/Indication -->
+		<div class="mt-3 flex gap-3 text-sm text-gray-500">
+			<span>👆 Cliquez pour plus de détails</span>
 		</div>
 	</div>
 </a>

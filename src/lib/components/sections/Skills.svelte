@@ -8,7 +8,7 @@
 	};
 </script>
 
-<section id="skills" class="bg-gray-100 px-6 py-20">
+<section id="skills" class="flex min-h-screen items-center justify-center bg-gray-100 px-6 py-20">
 	<div class="container mx-auto max-w-6xl">
 		<h2 class="mb-12 text-center text-4xl font-bold text-gray-900">Compétences Techniques</h2>
 

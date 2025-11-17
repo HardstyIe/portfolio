@@ -3,6 +3,10 @@
 @plugin '@tailwindcss/typography';
 
 /* src/app.css - Animations custom */
+html {
+	scroll-behavior: smooth;
+	scroll-snap-type: y mandatory;
+}
 @keyframes float {
 	0%,
 	100% {
@@ -15,9 +19,4 @@
 
 .animate-float {
 	animation: float 3s ease-in-out infinite;
-}
-
-/* Smooth scroll */
-html {
-	scroll-behavior: smooth;
 }

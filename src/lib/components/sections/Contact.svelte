@@ -1,6 +1,7 @@
 <!-- src/lib/components/sections/Contact.svelte -->
 <script lang="ts">
-	import { Mail, MapPin, Phone } from 'lucide-svelte';
+	import { textToHexEntities } from '$lib/utils/encodeMail';
+	import { Github, Linkedin, Mail, MapPin } from 'lucide-svelte';
 
 	let formData = $state({
 		name: '',
@@ -22,11 +23,15 @@
 	}
 </script>
 
-<section id="contact" class="bg-linear-to-br from-indigo-600 to-purple-600 px-6 py-20 text-white">
+<section
+	id="contact"
+	class="flex min-h-screen items-center justify-center bg-linear-to-br from-indigo-600 to-purple-600 px-6 py-20 text-white"
+>
 	<div class="container mx-auto max-w-4xl">
-		<h2 class="mb-4 text-center text-4xl font-bold">Travaillons ensemble !</h2>
-		<p class="mb-12 text-center text-indigo-100">
-			Un projet en tête ? N'hésitez pas à me contacter
+		<h2 class="mb-4 text-center text-4xl font-bold">Discutons de votre projet</h2>
+		<p class="mb-12 text-center text-lg text-indigo-100">
+			Développeur web junior passionné et motivé, je recherche activement des opportunités<br />
+			pour mettre mes compétences au service de projets innovants.
 		</p>
 
 		<div class="grid gap-12 md:grid-cols-2">
@@ -39,7 +44,7 @@
 						id="name"
 						bind:value={formData.name}
 						required
-						class="w-full rounded-lg bg-white/10 px-4 py-3 text-white placeholder-white/50 backdrop-blur-sm"
+						class="w-full rounded-lg bg-white/10 px-4 py-3 text-white placeholder-white/50 backdrop-blur-sm focus:ring-2 focus:ring-white/50 focus:outline-none"
 						placeholder="Votre nom"
 					/>
 				</div>
@@ -51,7 +56,7 @@
 						id="email"
 						bind:value={formData.email}
 						required
-						class="w-full rounded-lg bg-white/10 px-4 py-3 text-white placeholder-white/50 backdrop-blur-sm"
+						class="w-full rounded-lg bg-white/10 px-4 py-3 text-white placeholder-white/50 backdrop-blur-sm focus:ring-2 focus:ring-white/50 focus:outline-none"
 						placeholder="votre@email.com"
 					/>
 				</div>
@@ -63,41 +68,46 @@
 						bind:value={formData.message}
 						required
 						rows="4"
-						class="w-full rounded-lg bg-white/10 px-4 py-3 text-white placeholder-white/50 backdrop-blur-sm"
-						placeholder="Votre message..."
+						class="w-full rounded-lg bg-white/10 px-4 py-3 text-white placeholder-white/50 backdrop-blur-sm focus:ring-2 focus:ring-white/50 focus:outline-none"
+						placeholder="Parlez-moi de votre projet ou de votre opportunité..."
 					></textarea>
 				</div>
 
 				<button
 					type="submit"
 					disabled={status === 'sending'}
-					class="w-full rounded-lg bg-white px-6 py-3 font-bold text-indigo-600 transition-all hover:bg-gray-100"
+					class="w-full rounded-lg bg-white px-6 py-3 font-bold text-indigo-600 transition-all hover:bg-gray-100 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
 				>
-					{status === 'sending' ? 'Envoi...' : 'Envoyer'}
+					{status === 'sending' ? 'Envoi en cours...' : 'Envoyer le message'}
 				</button>
 
 				{#if status === 'success'}
-					<p class="text-center text-green-300">✓ Message envoyé !</p>
+					<p class="text-center font-medium text-green-300">
+						✓ Message envoyé avec succès ! Je vous répondrai rapidement.
+					</p>
 				{/if}
 			</form>
 
 			<!-- Infos de contact -->
 			<div class="space-y-6">
+				<div>
+					<h3 class="mb-4 text-2xl font-bold">Restons en contact</h3>
+					<p class="mb-6 text-indigo-100">
+						Ouvert à toute opportunité professionnelle dans le développement web. N'hésitez pas à me
+						contacter pour échanger !
+					</p>
+				</div>
+
 				<div class="flex items-center gap-4">
 					<Mail size={24} />
 					<div>
 						<p class="font-medium">Email</p>
-						<a href="mailto:ton@email.com" class="text-indigo-200 hover:text-white">
-							ton@email.com
+						<a
+							href={textToHexEntities('mailto:duchemindylan59@gmail.com')}
+							class="text-indigo-200 transition-colors hover:text-white"
+						>
+							{@html textToHexEntities('duchemindylan59@gmail.com')}
 						</a>
-					</div>
-				</div>
-
-				<div class="flex items-center gap-4">
-					<Phone size={24} />
-					<div>
-						<p class="font-medium">Téléphone</p>
-						<a href="tel:+33..." class="text-indigo-200 hover:text-white"> +33 X XX XX XX XX </a>
 					</div>
 				</div>
 
@@ -105,7 +115,37 @@
 					<MapPin size={24} />
 					<div>
 						<p class="font-medium">Localisation</p>
-						<p class="text-indigo-200">Lille, France</p>
+						<p class="text-indigo-200">Lille, Hauts-de-France</p>
+					</div>
+				</div>
+
+				<div class="flex items-center gap-4">
+					<Github size={24} />
+					<div>
+						<p class="font-medium">GitHub</p>
+						<a
+							href="https://github.com/HardstyIe"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-indigo-200 transition-colors hover:text-white"
+						>
+							@HardstyIe
+						</a>
+					</div>
+				</div>
+
+				<div class="flex items-center gap-4">
+					<Linkedin size={24} />
+					<div>
+						<p class="font-medium">LinkedIn</p>
+						<a
+							href="https://linkedin.com/in/dylan-duchemin"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-indigo-200 transition-colors hover:text-white"
+						>
+							Dylan Duchemin
+						</a>
 					</div>
 				</div>
 			</div>

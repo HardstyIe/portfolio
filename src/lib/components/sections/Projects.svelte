@@ -21,7 +21,7 @@
 	const allTags = $derived(['all', ...new Set(projects.flatMap((p) => p.tags || []))]);
 </script>
 
-<section id="projects" class="px-6 py-20">
+<section id="projects" class="flex min-h-screen items-center justify-center px-6 py-20">
 	<div class="container mx-auto max-w-6xl">
 		<h2 class="mb-4 text-center text-4xl font-bold text-gray-900">Mes Projets</h2>
 		<p class="mb-12 text-center text-gray-600">Découvrez mes réalisations récentes</p>

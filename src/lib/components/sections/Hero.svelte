@@ -20,21 +20,22 @@
 		<!-- Sous-titre animé -->
 		<p class="mb-2 text-2xl text-gray-600">Développeur Full Stack</p>
 		<p class="mb-8 text-xl text-gray-500">
-			Je crée des expériences web modernes avec React, Svelte & Node.js
+			Je crée des expériences web modernes avec Svelte & Node.js
 		</p>
 
 		<!-- Stats -->
-		<div class="mb-12 flex justify-center gap-12">
-			<div>
-				<p class="text-gray-600">Années d'expérience</p>
+		<div class="mb-12 flex flex-wrap justify-center gap-8 md:gap-12">
+			<div class="text-center">
+				<p class="text-3xl font-bold text-indigo-600">2025</p>
+				<p class="text-gray-600">Formation SIMPLON</p>
 			</div>
-			<div>
-				<p class="text-3xl font-bold text-indigo-600">15+</p>
+			<div class="text-center">
+				<p class="text-3xl font-bold text-indigo-600">4</p>
 				<p class="text-gray-600">Projets réalisés</p>
 			</div>
-			<div>
-				<p class="text-3xl font-bold text-indigo-600">10+</p>
-				<p class="text-gray-600">Clients satisfaits</p>
+			<div class="text-center">
+				<p class="text-3xl font-bold text-indigo-600">💯</p>
+				<p class="text-gray-600">Disponible</p>
 			</div>
 		</div>
 
@@ -47,7 +48,7 @@
 				Voir mes projets
 			</a>
 			<a
-				href="/cv.pdf"
+				href="/assets/cv.pdf"
 				download
 				class="rounded-full border-2 border-indigo-600 px-8 py-3 text-indigo-600 transition-all hover:bg-indigo-50"
 			>
